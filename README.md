@@ -3,8 +3,7 @@
 ## 7. Implementation of Functions.
 ## 8. Implementation of passing parameters.
 # Ex.No:16
-  Implement a C program to read a date in the format DD/MM/YYYY and determine whether the entered date is valid. The program should check the correctness of the day, month, and year, including leap year calculations for February.
-# Date : 
+  Implement a C program to read a date in the format DD/MM/YYYY and determine whether the entered date is valid. The program should check the correctness of the day, month, and year, including leap year calculations for February. 
 # Aim:
  To implement a C program that validates a user-entered date using a function without parameters and without return value, ensuring the correctness of day, month, year, and leap year conditions.
 # Algorithm:
@@ -41,7 +40,57 @@
 ### Step 14: 
   Stop
 # Program:
+```
+#include <stdio.h>
+void validateDate()
+{
+    int dd, mm, yy;
+    printf("Enter date (DD/MM/YYYY): ");
+    scanf("%d/%d/%d", &dd, &mm, &yy);
+    if(yy < 1900 || yy > 9999)
+    {
+        printf("Year is not valid\n");
+        return;
+    }
+    if(mm < 1 || mm > 12)
+    {
+        printf("Month is not valid\n");
+        return;
+    }
+    if(mm == 1 || mm == 3 || mm == 5 || mm == 7 || mm == 8 || mm == 10 || mm == 12)
+    {
+        if(dd >= 1 && dd <= 31)
+            printf("Date is valid.\n");
+        else
+            printf("Date is invalid.\n");
+    }
+    else if(mm == 4 || mm == 6 || mm == 9 || mm == 11)
+    {
+        if(dd >= 1 && dd <= 30)
+            printf("Date is valid.\n");
+        else
+            printf("Date is invalid.\n");
+    }
+    else if(mm == 2)  
+    {
+        int leap = (yy % 400 == 0) || ((yy % 4 == 0) && (yy % 100 != 0));
+        if((dd >= 1 && dd <= 28) || (dd == 29 && leap))
+            printf("Date is valid.\n");
+        else
+            printf("Date is invalid.\n");
+    }
+}
+
+int main()
+{
+    validateDate();  
+    return 0;
+}
+
+```
 # Output:
+<img width="501" height="216" alt="Screenshot 2025-11-19 143618" src="https://github.com/user-attachments/assets/10f8eba9-9feb-4afe-bf77-79351326cd21" />
+
 # Result: 
 Thus, the program was implemented and executed successfully, and the required output was obtained.
 
@@ -49,8 +98,7 @@ Thus, the program was implemented and executed successfully, and the required ou
 # 19AI304-Fundamentals-of-C-Programming-2025-Odd-M4
 # IAPR-4- Module 4 - FoC
 # Ex.No:17
-  Develop a C program to read two numbers from the user and determine the maximum and minimum values. Use user-defined functions with arguments and return values—one function to find the maximum (max()) and another to find the minimum (min()).
-# Date : 
+  Develop a C program to read two numbers from the user and determine the maximum and minimum values. Use user-defined functions with arguments and return values—one function to find the maximum (max()) and another to find the minimum (min()). 
 # Aim:
  To develop a C program that uses functions with parameters and return values to compute and display the maximum and minimum of two user-entered numbers.
 # Algorithm:
@@ -89,7 +137,36 @@ Thus, the program was implemented and executed successfully, and the required ou
 ### Step 13: 
   Stop
 # Program:
+```
+#include <stdio.h>
+int max(int a, int b)
+{
+    if(a > b)
+        return a;
+    else
+        return b;
+}
+int min(int a, int b)
+{
+    if(a > b)
+        return b;
+    else
+        return a;
+}
+int main()
+{
+    int num1, num2, maximum, minimum;
+    scanf("%d %d", &num1, &num2);
+    maximum = max(num1, num2);
+    minimum = min(num1, num2);
+    printf("Maximum = %d\n", maximum);
+    printf("Minimum = %d\n", minimum);
+    return 0;
+}
+```
 # Output:
+<img width="421" height="302" alt="Screenshot 2025-11-19 143824" src="https://github.com/user-attachments/assets/4b09b715-fe7a-41b5-8177-75cc0066f856" />
+
 # Result: 
 Thus, the program was implemented and executed successfully, and the required output was obtained.
 
@@ -98,7 +175,6 @@ Thus, the program was implemented and executed successfully, and the required ou
 # IAPR-4- Module 4 - FoC
 # Ex.No:18
   Develop a C program to convert temperatures between Celsius and Fahrenheit: Convert Celsius to Fahrenheit using a function that returns the converted value. Convert Fahrenheit to Celsius using another function that returns the converted value. Display the results in the main() function.
-# Date : 
 # Aim:
  To develop a C program that converts temperatures between Celsius and Fahrenheit using functions with return values.
 # Algorithm:
@@ -137,7 +213,39 @@ Thus, the program was implemented and executed successfully, and the required ou
 ### Step 11: 
  Stop
 # Program:
+```
+#include <stdio.h>
+float celtof();
+float ftocel();
+int main()
+{
+    float fValue, cValue;
+    fValue = celtof();
+    printf("Temperature in Fahrenheit = %.2f\n", fValue);
+    cValue = ftocel();
+    printf("Temperature in Celsius = %.2f\n", cValue);
+    return 0;
+}
+float celtof()
+{
+    float C, F;
+    printf("Enter the temperature in Celsius: ");
+    scanf("%f", &C);
+    F = (C * 9 / 5) + 32;
+    return F;
+}
+float ftocel()
+{
+    float f, celsius;
+    printf("Enter the temperature in Fahrenheit: ");
+    scanf("%f", &f);
+    celsius = (f - 32) * 5 / 9;
+    return celsius;
+}
+```
 # Output:
+<img width="437" height="432" alt="Screenshot 2025-11-19 145937" src="https://github.com/user-attachments/assets/8fb2042f-7a90-4006-a8ea-9f37932f7a83" />
+
 # Result: 
 Thus, the program was implemented and executed successfully, and the required output was obtained.
 
@@ -145,8 +253,7 @@ Thus, the program was implemented and executed successfully, and the required ou
 # 19AI304-Fundamentals-of-C-Programming-2025-Odd-M4
 # IAPR-4- Module 4 - FoC
 # Ex.No:19
-  Build a C program to print the elements of a given 4×4 matrix in spiral order starting from the top-left element and moving clockwise,using a user-defined parameterized function without return spiralPrint().
-# Date : 
+  Build a C program to print the elements of a given 4×4 matrix in spiral order starting from the top-left element and moving clockwise,using a user-defined parameterized function without return spiralPrint(). 
 # Aim:
  To build a C program to display the elements of a 2D array in spiral form, traversing the outer elements first and then moving inward in a clockwise direction, using a user-defined parameterized function without return spiralPrint().
 # Algorithm:
@@ -185,7 +292,51 @@ Thus, the program was implemented and executed successfully, and the required ou
 ### Step 7: 
   Stop
 # Program:
+```
+#include <stdio.h>
+#define R 4
+#define C 4
+void spiralPrint(int m, int n, int a[R][C])
+{
+    int k = 0, l = 0;
+    while (k < m && l < n)
+    {
+        for (int i = l; i < n; i++)     
+            printf("%d ", a[k][i]);
+        k++;
+        for (int i = k; i < m; i++)
+            printf("%d ", a[i][n-1]);
+        n--;
+        if (k < m)
+        {
+            for (int i = n-1; i >= l; i--)
+                printf("%d ", a[m-1][i]);
+            m--;
+        }
+        if (l < n)
+        {
+            for (int i = m-1; i >= k; i--) 
+                printf("%d ", a[i][l]);
+            l++;
+        }
+    }
+}
+int main()
+{
+    int a[R][C] = {
+        {1,  2,  3,  4},
+        {5,  6,  7,  8},
+        {9, 10, 11, 12},
+        {13,14,15,16}
+    };
+    spiralPrint(R, C, a);
+    return 0;
+}
+
+```
 # Output:
+<img width="446" height="196" alt="Screenshot 2025-11-19 150917" src="https://github.com/user-attachments/assets/869c217b-2de3-4e2c-a219-54a462eea9fb" />
+
 # Result: 
 Thus, the program was implemented and executed successfully, and the required output was obtained.
 
@@ -193,8 +344,7 @@ Thus, the program was implemented and executed successfully, and the required ou
 # 19AI304-Fundamentals-of-C-Programming-2025-Odd-M4
 # IAPR-4- Module 4 - FoC
 # Ex.No:20
-  Build a C program to convert a string such that the first and last characters, as well as the characters before and after each space, are converted to uppercase. Implement this using a user-defined parameterized function without return.
-# Date : 
+  Build a C program to convert a string such that the first and last characters, as well as the characters before and after each space, are converted to uppercase. Implement this using a user-defined parameterized function without return. 
 # Aim:
 To build a C program to convert a string as described above, using a user-defined parameterized function without return convertFirstCLastC(char str[]).
 # Algorithm:
@@ -220,7 +370,39 @@ To build a C program to convert a string as described above, using a user-define
 ### Step 6: 
  Stop
 # Program:
+```
+#include <stdio.h>
+#include <ctype.h>
+#include <string.h>
+void convertFirstCLastC(char str[])
+{
+    int len = strlen(str);
+    if (len == 0) return;
+    str[0] = toupper(str[0]);   
+    str[len - 1] = toupper(str[len - 1]);
+
+    for (int i = 1; i < len - 1; i++)
+    {
+        if (str[i] == ' ')
+        {
+            str[i - 1] = toupper(str[i - 1]); 
+            str[i + 1] = toupper(str[i + 1]); 
+        }
+    }
+}
+int main()
+{
+    char str[100];
+    printf("Enter a string: ");
+    scanf("%[^\n]s", str);
+    convertFirstCLastC(str);
+    printf("Modified string: %s\n", str);
+    return 0;
+}
+```
 # Output:
+<img width="479" height="234" alt="Screenshot 2025-11-19 151343" src="https://github.com/user-attachments/assets/b4d4de2d-ac9a-4af1-8f96-244b33b97059" />
+
 # Result: 
 Thus, the program was implemented and executed successfully, and the required output was obtained.
 
